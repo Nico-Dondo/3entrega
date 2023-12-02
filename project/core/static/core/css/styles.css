@@ -78,6 +78,10 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+.clientes-container {
+  max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+}
 
 *,
 *::before,
@@ -384,6 +388,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -442,6 +447,7 @@ legend + * {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 /* rtl:raw:
@@ -463,7 +469,9 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button; /* Define la propiedad estándar 'appearance' */
 }
+
 
 output {
   display: inline-block;
