@@ -7,3 +7,6 @@ def home(request):
 
 def about(request):
     return render(request, "core/about.html")
+
+def cliente(request):
+    return render (request, "cliente/crear.html")

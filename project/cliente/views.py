@@ -49,6 +49,8 @@ def busqueda(request):
 
 
 from . import forms
+from django.contrib import messages
+from django.urls import reverse
 
 
 def crear(request):
@@ -56,7 +58,9 @@ def crear(request):
         form = forms.ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("cliente:index")
+            # Redirige a la vista principal en la aplicación 'core'
+            return redirect(reverse("core:index"))
     else:
         form = forms.ClienteForm()
     return render(request, "cliente/crear.html", {"form": form})
+
