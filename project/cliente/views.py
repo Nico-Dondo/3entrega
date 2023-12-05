@@ -58,7 +58,7 @@ def crear(request):
         form = forms.ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-
+            # Redirige a la vista principal en la aplicación 'core'
             return redirect(reverse("core:index"))
     else:
         form = forms.ClienteForm()
