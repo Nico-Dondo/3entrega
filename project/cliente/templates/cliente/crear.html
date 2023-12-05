@@ -4,10 +4,6 @@
     Crear cliente
 {% endblock contenido_titulo %}
 
-{% block tarjetas %}
-    {# Omitir el bloque tarjetas para ocultar la barra de búsqueda #}
-{% endblock tarjetas %}
-
 {% block contenido %}
     {% if messages %}
         <ul class="messages">
@@ -24,4 +20,5 @@
             <button type="submit">Guardar</button>
         </form>
     {% endif %}
+
 {% endblock contenido %}
