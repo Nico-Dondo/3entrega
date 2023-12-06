@@ -46,13 +46,23 @@
         <!-- Call to Action-->
         <div class="card mb-4 barra-busqueda">
             <div class="card-header">Busqueda</div>
-            <div class="card-body">
+            <form action="{% url 'core:buscar' %}" method="GET">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Ingrese su busqueda"
+                    <input class="form-control" type="text" name="q" placeholder="Ingrese su búsqueda"
                         aria-label="Enter search term..." aria-describedby="button-search">
-                    <button class="btn btn-primary" id="button-search" type="button">Vamos</button>
+                    <button class="btn btn-primary" type="submit">Vamos</button>
                 </div>
+            </form>
+        
+            <!-- Mostrar resultados aquí -->
+            {% if results %}
+            <h2>Resultados para "{{ query }}"</h2>
+            <div class="row gx-4 gx-lg-5">
+                {% for result in results %}
+                    {% include 'core/card.html' with titulo=result.nombre imagen=result.imagen descripcion=result.descripcion %}
+                {% endfor %}
             </div>
+        {% endif %}
         </div>
         <!-- Content Row-->
         <div class="row gx-4 gx-lg-5">
