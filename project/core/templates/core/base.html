@@ -49,11 +49,14 @@
             <form action="{% url 'core:buscar' %}" method="GET">
                 <div class="input-group">
                     <input class="form-control" type="text" name="q" placeholder="Ingrese su búsqueda"
-                        aria-label="Enter search term..." aria-describedby="button-search">
+                           aria-label="Enter search term..." aria-describedby="button-search">
                     <button class="btn btn-primary" type="submit">Vamos</button>
+                    {% if results %}
+                        <a href="{% url 'core:buscar' %}" class="btn btn-danger">Borrar resultados</a>
+                    {% endif %}
                 </div>
             </form>
-        
+            
             <!-- Mostrar resultados aquí -->
             {% if results %}
             <h2>Resultados para "{{ query }}"</h2>

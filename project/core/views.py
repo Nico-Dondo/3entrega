@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 def home(request):
     return render(request, "core/index.html")
@@ -9,9 +11,29 @@ def about(request):
 def cliente(request):
     return render(request, "cliente/crear.html")
 
+
+
 def buscar_view(request):
     query = request.GET.get('q', '')
+    borrar_resultados = 'borrar' in request.GET
+
+    if borrar_resultados:
+        # Lógica para borrar todos los resultados almacenados en la sesión
+        if 'resultados' in request.session:
+            del request.session['resultados']
+        return redirect('core:index')  # Cambia 'index' por el nombre de la URL de la página principal
+
+    # Lógica de búsqueda aquí (puedes personalizar según tus necesidades)
     results = obtener_resultados_segun_busqueda(query)
+
+    # Si estás volviendo a base.html, borra los resultados antiguos
+    if 'resultados' in request.session:
+        del request.session['resultados']
+
+    # Almacena los resultados en la sesión para que estén disponibles en otras vistas
+    request.session['resultados'] = results
+
+    # Redirige a la página base.html
     return render(request, 'core/base.html', {'query': query, 'results': results})
 
 def obtener_resultados_segun_busqueda(query):
