@@ -31,41 +31,41 @@
     {% endblock contenido %}
 
     <!-- ... (código existente) ... -->
-    <div class="container px-4 px-lg-5">
-        <!-- Heading Row-->
-        <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                    src="{% static 'core/img/thebestever.jpg' %}" alt="..." /></div>
-            <div class="col-lg-5">
-                <h1 class="font-weight-light">Business Name or Tagline</h1>
-                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it,
-                    but it makes a great use of the standard Bootstrap core components. Feel free to use this template
-                    for any project you want!</p>
-            </div>
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                src="{% static 'core/img/thebestever.jpg' %}" alt="..." /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Business Name or Tagline</h1>
+            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it,
+                but it makes a great use of the standard Bootstrap core components. Feel free to use this template
+                for any project you want!</p>
         </div>
-        <!-- Call to Action-->
-        {% block busqueda %}
-        <div class="card mb-4 barra-busqueda">
-            <div class="card-header">Busqueda</div>
-            <div class="card-body">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Ingrese su búsqueda"
-                        aria-label="Enter search term..." aria-describedby="button-search">
-                    <button class="btn btn-primary" id="button-search" type="button">Vamos</button>
-                </div>
-            </div>
-        </div>
-        {% endblock busqueda %}
-        <!-- Content Row-->
-        <div class="row gx-4 gx-lg-5">
-            {% block tarjetas %}{% endblock tarjetas %}
-        </div>
-    
-        <!-- Footer-->
-        {% include 'core/footer.html' %}
-        <!-- Core theme JS-->
-        <script src="{% static 'core/js/scripts.js' %}"></script>
     </div>
+    <!-- Call to Action-->
+    {% block busqueda %}
+    <div class="card mb-4 barra-busqueda">
+        <div class="card-header">Busqueda</div>
+        <div class="card-body">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Ingrese su búsqueda"
+                    aria-label="Enter search term..." aria-describedby="button-search">
+                <button class="btn btn-primary" id="button-search" type="button">Vamos</button>
+            </div>
+        </div>
+    </div>
+    {% endblock busqueda %}
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        {% block tarjetas %}{% endblock tarjetas %}
+    </div>
+
+    <!-- Footer-->
+    {% include 'core/footer.html' %}
+    <!-- Core theme JS-->
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+</div>
 </body>
 
 </html>
