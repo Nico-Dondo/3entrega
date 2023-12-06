@@ -13,6 +13,10 @@ def cliente(request):
 
 
 
+# ...
+
+# ... (importaciones sin cambios)
+
 def buscar_view(request):
     query = request.GET.get('q', '')
     borrar_resultados = 'borrar' in request.GET
@@ -26,15 +30,25 @@ def buscar_view(request):
     # Lógica de búsqueda aquí (puedes personalizar según tus necesidades)
     results = obtener_resultados_segun_busqueda(query)
 
-    # Si estás volviendo a base.html, borra los resultados antiguos
-    if 'resultados' in request.session:
-        del request.session['resultados']
-
-    # Almacena los resultados en la sesión para que estén disponibles en otras vistas
-    request.session['resultados'] = results
+    # Almacena los resultados en la sesión solo si no se está borrando
+    if not borrar_resultados:
+        request.session['resultados'] = results
 
     # Redirige a la página base.html
     return render(request, 'core/base.html', {'query': query, 'results': results})
+
+
+def borrar_resultados(request):
+    if request.method == 'POST':
+        # Lógica para borrar resultados (por ejemplo, borra la variable de sesión)
+        if 'resultados' in request.session:
+            del request.session['resultados']
+
+    # Redirige a la página principal
+    return redirect('core:index')
+
+# ...
+
 
 def obtener_resultados_segun_busqueda(query):
     bateristas = [
