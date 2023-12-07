@@ -4,28 +4,12 @@
     Crear cliente
 {% endblock contenido_titulo %}
 
-{% block tarjetas %}
-    {# Omitir el bloque tarjetas para ocultar la barra de búsqueda #}
-{% endblock tarjetas %}
-
-{% block busqueda %}
-    {# Deja este bloque vacío o simplemente no lo incluyas para ocultar la barra de búsqueda #}
-{% endblock busqueda %}
-
 {% block contenido %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if not messages %}
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Guardar</button>
-        </form>
-    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
+        <button type="submit">Guardar</button>
+    </form>
 {% endblock contenido %}

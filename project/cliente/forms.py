@@ -7,7 +7,7 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = models.Cliente
         fields = ['nombre', 'apellido', 'nacimiento', 'pais_origen']
-        labels = {'nombre': 'nombre', 'apellido': 'apellido', 'nacimiento': 'nacimiento','pais_origen': 'pais_origen'}
+        labels = {'nombre': 'nombre', 'apellido': 'aéllido', 'nacimiento': 'nacimiento','pais_origen': 'pais_origen'}
         widgets ={
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'apellido': forms.TextInput(attrs={'class': 'form-control'}),

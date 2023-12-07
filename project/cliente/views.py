@@ -51,15 +51,17 @@ def busqueda(request):
 from . import forms
 from django.contrib import messages
 from django.urls import reverse
+from cliente.forms import ClienteForm
 
-
+# En tu vista cliente/views.py
 def crear(request):
     if request.method == "POST":
-        form = forms.ClienteForm(request.POST)
+        form = ClienteForm(request.POST)
+        print(form.errors)  
         if form.is_valid():
             form.save()
-            # Redirige a la vista principal en la aplicación 'core'
-            return redirect(reverse("core:index"))
+            return redirect(reverse("core:index"))  # ¡Esta línea va aquí!
     else:
-        form = forms.ClienteForm()
+        form = ClienteForm()
+
     return render(request, "cliente/crear.html", {"form": form})
