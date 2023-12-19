@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+
+{% block contenido %}
+  <h2>Registro</h2>
+  <form method="post" action="{% url 'registro' %}" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="id_username">Ingrese su nombre de usuario:</label>
+      <input type="text" name="username" id="id_username" class="form-control" required>
+      <div class="invalid-feedback">
+        Por favor, ingresa tu usuario.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="id_password">Ingrese su contraseña:</label>
+      <input type="password" name="password" id="id_password" class="form-control" required>
+      <div class="invalid-feedback">
+        Por favor, ingresa tu contraseña.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="id_email">Ingrese su correo electrónico:</label>
+      <input type="email" name="email" id="id_email" class="form-control" required>
+      <div class="invalid-feedback">
+        Por favor, ingresa tu correo electrónico.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+  </form>
+{% endblock %}
