@@ -17,13 +17,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-gpGfzbzzVCEhY5KgPZNDEzfcSU2XOdFNTBb6Ukd5HxCt6l5fZgAfgI5Gz7LH6FA" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
-
-    
 </head>
 
 <body>
-    {% include 'core/navbar.html' %}
-    <!-- Page Content-->
+    {% block navbar %}
+        {% include 'core/navbar.html' %}
+    {% endblock %}
+
     {% block contenido_titulo %}
     {% endblock contenido_titulo %}
 
@@ -69,10 +69,12 @@
         {% endblock tarjetas %}
     </div>
     {% block contenido %}
-    
     {% endblock contenido %}
-    <!-- Footer-->
-    {% include 'core/footer.html' %}
+
+    {% block footer %}
+        {% include 'core/footer.html' %}
+    {% endblock %}
+
     <!-- Core theme JS-->
     <script src="{% static 'core/js/scripts.js' %}"></script>
 </body>

@@ -24,4 +24,5 @@ class RegistroView(View):
 
 
 def custom_login(request):
+    # Tu lógica de vista aquí
     return render(request, 'login/custom_login.html')
